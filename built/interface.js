@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Student = /** @class */ (function () {
     function Student(firstName, middleInitial, lastName) {
         this.firstName = firstName;
@@ -18,7 +20,19 @@ var kim = {
     gender: 'male',
     lastName: 'op',
 };
-var add = function (x, y) {
-    return x + y;
+var add = function (a, b) {
+    return a + b;
 };
 console.log(add(1, 2));
+;
+var a = {
+    age: 11,
+    1: '1',
+    name: 'foo',
+};
+var A = /** @class */ (function () {
+    function A() {
+    }
+    return A;
+}());
+exports.A = A;
