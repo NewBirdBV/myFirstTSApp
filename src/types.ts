@@ -72,3 +72,13 @@ let someValue: any = 'this is a string';
 let strLength:number = (someValue as string).length;
 //或 let strLength:number = (<string>someValue).length;
 console.log(strLength);
+
+//元组 tuple
+
+let tuple: [string, number] = ['1', 1];
+tuple[0];
+tuple[1];
+//tuple[2].toString(); //越界元素访问时将使用联合类型 string|number
+
+//联合类型
+let combinedTypes :string|undefined|null = '123';

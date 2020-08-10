@@ -60,7 +60,7 @@ function createIns(c) {
 function createIns1(c) {
     return new c();
 }
-//Eg:
+//Eg: 使用原型属性推断并约束构造函数与类实例的关系。
 var BeeKeeper = /** @class */ (function () {
     function BeeKeeper() {
     }
@@ -93,7 +93,7 @@ var Lion = /** @class */ (function (_super) {
 function createInstance(c) {
     return c;
 }
-console.log(createInstance(new Bee()) instanceof Bee);
+createInstance(new Bee());
 createInstance(new Lion());
 //-----------上述的两次调用中的new操作可以挪到声明中, 则变为--------------//
 function createInstance1(c) {
@@ -102,6 +102,7 @@ function createInstance1(c) {
 //------------等价于上述的调用--------//
 createInstance1(Bee);
 createInstance1(Lion);
+//综上，可以理解为参数c是需要先满足泛型参数A的形状（需要有numLegs属性）。所以会有{new () : A }的写法
 /**
  * 6. 默认泛型参数
  */
@@ -110,3 +111,4 @@ function myFunc(x) {
 }
 myFunc(1);
 myFunc('1');
+myFunc(true);

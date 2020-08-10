@@ -55,3 +55,10 @@ var someValue = 'this is a string';
 var strLength = someValue.length;
 //或 let strLength:number = (<string>someValue).length;
 console.log(strLength);
+//元组 tuple
+var tuple = ['1', 1];
+tuple[0];
+tuple[1];
+//tuple[2].toString(); //越界元素访问时将使用联合类型 string|number
+//联合类型
+var combinedTypes = '123';

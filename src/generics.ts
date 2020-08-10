@@ -140,3 +140,4 @@ function myFunc<T = string >(x:T) : T {
 
 myFunc(1);
 myFunc('1');
+myFunc(true);

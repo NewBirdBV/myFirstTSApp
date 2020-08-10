@@ -57,4 +57,76 @@ let a:StringArray = {
     name: 'foo',
 };
 
-export class A{}
+/**
+ * 类类型中需要区分类的静态部分（构造函数）和实例部分
+ * 当一个类实现一个接口时，只有实例部分的类型校验生效
+ */
+
+//构造函数签名，需要将构造函数单独拿出来做校验
+interface ClockConstructor {
+    new (hour: number, minute: number) : ClockInterface;
+}
+
+interface ClockInterface {
+    tick() : void
+}
+
+class AClock implements ClockInterface {
+    tick() {
+        console.log();
+    };
+}
+
+class BClock implements ClockInterface {
+    tick() {
+        console.log();
+    }
+}
+
+function createClock(contructor: ClockConstructor, hour: number, minute:number) {
+    return new contructor(hour, minute);
+}
+
+//检查构造函数的签名
+createClock(AClock, 1,2);
+createClock(BClock, 1,2);
+
+/**
+ * 混合类型，既可以作为函数，也可以作为对象使用
+ */
+
+interface Counter {
+    (start: number): string,
+    interval: number,
+    reset(): void
+}
+
+function getCounter(): Counter {
+    let counter = function (start: number) {} as Counter;
+    counter.interval = 1;
+    counter.reset = function () {};
+    return counter;
+}
+
+/**
+ * 接口继承于类
+ */
+class Control {
+    private  state: any
+}
+
+interface SC extends Control {
+    select(): void
+}
+
+// SC只能由Control的子类来实现（因为继承了Control类中的私有成员'state', 只有其子类有访问权限）
+class TB extends Control implements SC{
+    select() {}
+}
+
+//未继承`Control`
+/*
+class CB implements SC {
+    select() {}
+}
+*/
