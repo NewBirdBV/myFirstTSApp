@@ -75,10 +75,14 @@ console.log(strLength);
 
 //元组 tuple
 
-let tuple: [string, number] = ['1', 1];
-tuple[0];
-tuple[1];
-//tuple[2].toString(); //越界元素访问时将使用联合类型 string|number
+let tuple: [string, number[], Array<boolean>] = ['1', [1,2],[false]];
+tuple[0]
+tuple[1]
+//tuple[2]; //越界元素访问时将使用联合类型 string|number
 
 //联合类型
-let combinedTypes :string|undefined|null = '123';
+let combinedTypes:string|undefined|null = '123';
+
+import Octopus from './interface';
+
+var a:Octopus = new Octopus('1');

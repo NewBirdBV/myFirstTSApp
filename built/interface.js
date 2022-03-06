@@ -1,27 +1,31 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
 var Student = /** @class */ (function () {
     function Student(firstName, middleInitial, lastName) {
         this.firstName = firstName;
         this.middleInitial = middleInitial;
         this.lastName = lastName;
-        this.fullName = "" + firstName + middleInitial + lastName;
+        this.fullName = "".concat(firstName).concat(middleInitial).concat(lastName);
     }
     return Student;
 }());
 function helloWorld(person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
+    return "Hello, ".concat(person.firstName, " ").concat(person.lastName);
 }
 var student = new Student('xiaofeng', 'Mr.', 'dong');
 console.log(student);
@@ -30,6 +34,7 @@ var kim = {
     firstName: 'mike',
     gender: 'male',
     lastName: 'op',
+    //middle: '1', //Err: 对象字面量会被特殊对待。存在目标类型Person不具备的属性middle，可以使用类型断言或者索引签名绕开检查。但大多数情况不应该绕开检查
 };
 var add = function (a, b) {
     return a + b;
@@ -93,3 +98,12 @@ class CB implements SC {
     select() {}
 }
 */
+var Octopus = /** @class */ (function () {
+    function Octopus(name) {
+        this.name = name;
+        this.numberOfLegs = 8;
+    }
+    return Octopus;
+}());
+var ab = Octopus;
+exports.default = Octopus;

@@ -112,7 +112,7 @@ function getCounter(): Counter {
  * 接口继承于类
  */
 class Control {
-    private  state: any
+    private state: any
 }
 
 interface SC extends Control {
@@ -130,3 +130,14 @@ class CB implements SC {
     select() {}
 }
 */
+
+
+class Octopus {
+    readonly numberOfLegs: number = 8;
+    constructor(private name: string) {
+    }
+}
+
+let ab:typeof Octopus = Octopus;
+
+export default Octopus;

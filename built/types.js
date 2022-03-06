@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 新增的一些类型
  */
@@ -56,9 +58,11 @@ var strLength = someValue.length;
 //或 let strLength:number = (<string>someValue).length;
 console.log(strLength);
 //元组 tuple
-var tuple = ['1', 1];
+var tuple = ['1', [1, 2], [false]];
 tuple[0];
 tuple[1];
-//tuple[2].toString(); //越界元素访问时将使用联合类型 string|number
+//tuple[2]; //越界元素访问时将使用联合类型 string|number
 //联合类型
 var combinedTypes = '123';
+var interface_1 = require("./interface");
+var a = new interface_1.default('1');

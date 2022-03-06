@@ -7,6 +7,11 @@ function  identity<T>(arg:T) : T {
     return arg;
 }
 
+
+const arrowFunc: GenericFnWithType<string> = (arg:string) => {
+    return '123';
+}
+
 /**
  * 2. 泛型接口
  */
@@ -72,7 +77,7 @@ let x = { a: 1, b: 2, c: 3, d: 4 };
 
 getProperty(x, 'a');
 
-// Error: getProperty(x, 'b');
+//Error: getProperty(x, 'e');
 
 /**
  * 5. 在泛型里使用类类型
@@ -88,6 +93,8 @@ function createIns<T>(c: {new(): T}) : T {
 function createIns1<T>(c: new() => T): T {
     return new c();
 }
+
+createIns1(Function)
 
 //Eg: 使用原型属性推断并约束构造函数与类实例的关系。
 
@@ -140,4 +147,5 @@ function myFunc<T = string >(x:T) : T {
 
 myFunc(1);
 myFunc('1');
-myFunc(true);
+
+myFunc(new Function());

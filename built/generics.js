@@ -2,10 +2,12 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -19,6 +21,9 @@ var __extends = (this && this.__extends) || (function () {
 function identity(arg) {
     return arg;
 }
+var arrowFunc = function (arg) {
+    return '123';
+};
 var myIdentity = identity;
 var myIdentity1 = identity;
 console.log(myIdentity1('0'));
@@ -48,7 +53,7 @@ function getProperty(obj, key) {
 }
 var x = { a: 1, b: 2, c: 3, d: 4 };
 getProperty(x, 'a');
-// Error: getProperty(x, 'b');
+//Error: getProperty(x, 'e');
 /**
  * 5. 在泛型里使用类类型
  */
@@ -60,6 +65,7 @@ function createIns(c) {
 function createIns1(c) {
     return new c();
 }
+createIns1(Function);
 //Eg: 使用原型属性推断并约束构造函数与类实例的关系。
 var BeeKeeper = /** @class */ (function () {
     function BeeKeeper() {
@@ -111,4 +117,4 @@ function myFunc(x) {
 }
 myFunc(1);
 myFunc('1');
-myFunc(true);
+myFunc(new Function());
